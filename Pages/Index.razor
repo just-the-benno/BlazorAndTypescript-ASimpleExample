@@ -1,0 +1,21 @@
+﻿@page "/"
+
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<button @onclick="LogA">LogA</button>
+<button @onclick="LogB">LogB</button>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code {
+	[Inject] private IJSRuntime JSRuntime { get; set; } = null!;
+
+	private async Task LogA() => await JSRuntime.InvokeVoidAsync("interop.tester.logA");
+	private async Task LogB() => await JSRuntime.InvokeVoidAsync("interop.tester.logB");
+
+}
